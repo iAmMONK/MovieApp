@@ -7,7 +7,7 @@ import tmdb.arch.movieapp.utils.delegates.viewBinding
 
 class MainActivity : AppCompatActivity() {
 
-    val binding: ActivityMainBinding by viewBinding(ActivityMainBinding::inflate)
+    private val binding by viewBinding(ActivityMainBinding::inflate)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
