@@ -10,7 +10,7 @@ import tmdb.arch.movieapp.ui.screens.saved.SavedMoviesViewModel
 import tmdb.arch.movieapp.ui.screens.search.SearchMoviesViewModel
 
 val viewModels = module {
-    viewModel { DiscoverMoviesViewModel(service = get<MoviesRepository>()) }
+    viewModel { DiscoverMoviesViewModel(repository = get<MoviesRepository>()) }
     viewModel { MoviesDetailsViewModel() }
     viewModel { SearchMoviesViewModel() }
     viewModel { SavedMoviesViewModel() }
