@@ -16,4 +16,9 @@ interface MoviesService {
         @Query("release_date.lte") dateFilter: String = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
             .format(Date())
     ): MovieListResponse
+
+    @GET("search/movie")
+    suspend fun findMovies(
+        @Query("query") query: String
+    ): MovieListResponse
 }
