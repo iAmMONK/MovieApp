@@ -1,7 +1,7 @@
 package tmdb.arch.movieapp.ui.screens.discover.adapters
 
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import tmdb.arch.movieapp.BuildConfig
@@ -11,7 +11,7 @@ import tmdb.arch.movieapp.utils.SimpleDiffCallback
 import tmdb.arch.movieapp.utils.delegates.viewBinding
 
 class MoviesListAdapter() :
-    ListAdapter<Movie, MoviesListAdapter.MovieViewHolder>(SimpleDiffCallback<Movie>()) {
+    PagingDataAdapter<Movie, MoviesListAdapter.MovieViewHolder>(SimpleDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
         MovieViewHolder(
