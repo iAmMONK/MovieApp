@@ -3,8 +3,8 @@ package tmdb.arch.movieapp.domain.model
 data class Movie(
     val adult: Boolean,
     val backdropPath: String?,
-    val genreIds: List<Int>,
-    val id: Int,
+    val genres: List<String>?,
+    val id: Long,
     val originalLanguage: String,
     val originalTitle: String,
     val overview: String,

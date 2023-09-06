@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tmdb.arch.movieapp.R
 import tmdb.arch.movieapp.databinding.MoviesSearchBinding
@@ -18,7 +19,11 @@ class SearchMovies : Fragment(R.layout.movies_search) {
 
     private val binding by viewBinding(MoviesSearchBinding::bind)
     private val viewModel by viewModel<SearchMoviesViewModel>()
-    private val searchMoviesAdapter by autoNull { SearchMoviesAdapter() }
+    private val searchMoviesAdapter by autoNull {
+        SearchMoviesAdapter {
+            findNavController().navigate(SearchMoviesDirections.searchMoviesToMovieDetails(it))
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

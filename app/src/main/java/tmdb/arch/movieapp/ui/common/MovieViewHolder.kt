@@ -6,13 +6,19 @@ import tmdb.arch.movieapp.BuildConfig
 import tmdb.arch.movieapp.databinding.MovieListItemBinding
 import tmdb.arch.movieapp.domain.model.Movie
 
-class MovieViewHolder(private val binding: MovieListItemBinding) :
-    RecyclerView.ViewHolder(binding.root) {
+class MovieViewHolder(
+    private val binding: MovieListItemBinding,
+    private val onClick: (Long) -> Unit
+) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(item: Movie) {
         binding.title.text = item.title
         binding.originalTitle.text = item.originalTitle
         binding.releaseDate.text = item.releaseDate
         binding.poster.load(BuildConfig.IMAGE_URL + item.posterPath)
+
+        binding.root.setOnClickListener {
+            onClick(item.id)
+        }
     }
 }

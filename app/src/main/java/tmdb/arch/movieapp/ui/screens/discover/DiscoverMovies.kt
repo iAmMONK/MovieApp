@@ -20,7 +20,11 @@ class DiscoverMovies : Fragment(R.layout.movies_discover) {
 
     private val binding by viewBinding(MoviesDiscoverBinding::bind)
     private val viewModel by viewModel<DiscoverMoviesViewModel>()
-    private val listAdapter by autoNull { MoviesListAdapter() }
+    private val listAdapter by autoNull {
+        MoviesListAdapter {
+            findNavController().navigate(DiscoverMoviesDirections.discoverMoviesToMovieDetails(it))
+        }
+    }
     private val listRefreshStateAdapter by autoNull {
         MoviesListStateAdapter { listAdapter.retry() }
     }

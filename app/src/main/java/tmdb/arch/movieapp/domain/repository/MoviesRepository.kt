@@ -15,4 +15,6 @@ class MoviesRepository(private val remoteService: MoviesService) {
     suspend fun findMovies(query: String) = remoteService.findMovies(query)
         .movieDtos
         .map(MovieDto::toModel)
+
+    suspend fun getMovieDetails(id: Long) = remoteService.getMovieDetails(id).toModel()
 }
