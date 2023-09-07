@@ -2,14 +2,14 @@ package tmdb.arch.movieapp.ui.screens.details
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.arch.utils.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import tmdb.arch.movieapp.domain.model.Movie
 import tmdb.arch.movieapp.domain.usecases.GetMovieDetailsUseCase
 import tmdb.arch.movieapp.domain.usecases.UpdateSavedMoviesUseCase
-import tmdb.arch.movieapp.utils.UiState
+import tmdb.arch.movieapp.repository.models.Movie
 
 class MoviesDetailsViewModel(
     private val movieId: Long,

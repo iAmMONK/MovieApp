@@ -10,10 +10,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import tmdb.arch.movieapp.R
 import tmdb.arch.movieapp.databinding.MoviesSearchBinding
 import tmdb.arch.movieapp.ui.screens.search.adapters.SearchMoviesAdapter
-import tmdb.arch.movieapp.utils.UiState
-import tmdb.arch.movieapp.utils.delegates.autoNull
-import tmdb.arch.movieapp.utils.delegates.viewBinding
-import tmdb.arch.movieapp.utils.extensions.collectRepeatOnStart
+import com.example.arch.utils.UiState
+import com.example.arch.utils.delegates.autoNull
+import com.example.arch.utils.delegates.viewBinding
+import com.example.arch.utils.extensions.collectRepeatOnStart
 
 class SearchMovies : Fragment(R.layout.movies_search) {
 

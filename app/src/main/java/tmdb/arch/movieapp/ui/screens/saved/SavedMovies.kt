@@ -5,15 +5,14 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.arch.utils.delegates.autoNull
+import com.example.arch.utils.delegates.viewBinding
+import com.example.arch.utils.extensions.collectRepeatOnStart
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import tmdb.arch.movieapp.R
 import tmdb.arch.movieapp.databinding.MoviesSavedBinding
-import tmdb.arch.movieapp.databinding.MoviesSearchBinding
 import tmdb.arch.movieapp.ui.screens.saved.adapters.SavedMoviesAdapter
-import tmdb.arch.movieapp.utils.delegates.autoNull
-import tmdb.arch.movieapp.utils.delegates.viewBinding
-import tmdb.arch.movieapp.utils.extensions.collectRepeatOnStart
 
 class SavedMovies : Fragment(R.layout.movies_saved) {
 

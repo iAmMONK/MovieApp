@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import tmdb.arch.movieapp.BuildConfig
 import tmdb.arch.movieapp.databinding.MovieListItemBinding
-import tmdb.arch.movieapp.domain.model.Movie
+import tmdb.arch.movieapp.repository.models.Movie
 
 class MovieViewHolder(
     private val binding: MovieListItemBinding,

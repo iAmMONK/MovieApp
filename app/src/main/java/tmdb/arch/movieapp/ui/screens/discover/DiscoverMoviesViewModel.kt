@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import tmdb.arch.movieapp.domain.model.Movie
 import tmdb.arch.movieapp.domain.usecases.GetLatestMoviesUseCase
+import tmdb.arch.movieapp.repository.models.Movie
 
 class DiscoverMoviesViewModel(private val getLatestMoviesUseCase: GetLatestMoviesUseCase) :
     ViewModel() {

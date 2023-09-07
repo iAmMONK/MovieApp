@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
+import com.example.arch.utils.delegates.autoNull
+import com.example.arch.utils.delegates.viewBinding
+import com.example.arch.utils.extensions.collectRepeatOnStart
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import tmdb.arch.movieapp.R
@@ -14,9 +17,6 @@ import tmdb.arch.movieapp.domain.usecases.GetSavedMoviesUseCase
 import tmdb.arch.movieapp.ui.screens.discover.adapters.HeaderListAdapter
 import tmdb.arch.movieapp.ui.screens.discover.adapters.MoviesListAdapter
 import tmdb.arch.movieapp.ui.screens.discover.adapters.MoviesListStateAdapter
-import tmdb.arch.movieapp.utils.delegates.autoNull
-import tmdb.arch.movieapp.utils.delegates.viewBinding
-import tmdb.arch.movieapp.utils.extensions.collectRepeatOnStart
 
 class DiscoverMovies : Fragment(R.layout.movies_discover) {
 

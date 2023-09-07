@@ -1,5 +1,6 @@
 package tmdb.arch.movieapp.domain.usecases
 
+import com.example.arch.utils.UiState
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -7,9 +8,8 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.map
-import tmdb.arch.movieapp.domain.model.Movie
-import tmdb.arch.movieapp.domain.repository.MoviesRepository
-import tmdb.arch.movieapp.utils.UiState
+import tmdb.arch.movieapp.repository.models.Movie
+import tmdb.arch.movieapp.repository.repository.MoviesRepository
 
 class MoviesSearchInteractor(
     private val repository: MoviesRepository

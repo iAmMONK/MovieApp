@@ -3,7 +3,7 @@ package tmdb.arch.movieapp.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import tmdb.arch.movieapp.databinding.ActivityMainBinding
-import tmdb.arch.movieapp.utils.delegates.viewBinding
+import com.example.arch.utils.delegates.viewBinding
 
 class MainActivity : AppCompatActivity() {
 

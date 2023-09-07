@@ -17,10 +17,6 @@ android {
         versionCode project.versionCode
         versionName project.versionName
 
-        Properties properties = new Properties()
-        properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
-        buildConfigField("String", "API_KEY", "\"${properties.getProperty('tmdb_key')}\"")
         buildConfigField("String", "IMAGE_URL", "\"https://image.tmdb.org/t/p/w500\"")
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -56,6 +52,9 @@ android {
 }
 
 dependencies {
+    implementation project(":repository")
+    implementation project(":arch")
+
     // Core
     implementation "androidx.core:core-ktx:$core_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
@@ -83,15 +82,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 //    implementation "androidx.navigation:navigation-compose:$nav_version"
 
-    // Local repository
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    ksp "androidx.room:room-compiler:$room_version"
-
-    // Remote repository
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$http_logging_version"
+    // Gson
     implementation "com.google.code.gson:gson:$gson_version"
 
     // Dependency Injection

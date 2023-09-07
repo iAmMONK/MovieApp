@@ -6,9 +6,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import tmdb.arch.movieapp.domain.model.Movie
 import tmdb.arch.movieapp.domain.usecases.MoviesSearchInteractor
-import tmdb.arch.movieapp.utils.UiState
+import tmdb.arch.movieapp.repository.models.Movie
+import com.example.arch.utils.UiState
 
 class SearchMoviesViewModel(
     private val searchInteractor: MoviesSearchInteractor

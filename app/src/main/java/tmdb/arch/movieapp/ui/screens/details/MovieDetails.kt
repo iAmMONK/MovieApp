@@ -8,15 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.example.arch.utils.UiState
+import com.example.arch.utils.delegates.viewBinding
+import com.example.arch.utils.extensions.collectRepeatOnStart
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import tmdb.arch.movieapp.BuildConfig
 import tmdb.arch.movieapp.R
 import tmdb.arch.movieapp.databinding.MovieDetailsBinding
-import tmdb.arch.movieapp.utils.UiState
-import tmdb.arch.movieapp.utils.delegates.viewBinding
-import tmdb.arch.movieapp.utils.extensions.collectRepeatOnStart
 
 class MovieDetails : Fragment(R.layout.movie_details) {
 
@@ -75,12 +75,18 @@ class MovieDetails : Fragment(R.layout.movie_details) {
                     binding.poster.load(BuildConfig.IMAGE_URL + item.posterPath)
 
                     binding.toWatchIcon.setColorFilter(
-                        if (item.isToWatch) Color.RED
-                        else Color.BLACK
+                        if (item.isToWatch) {
+                            Color.RED
+                        } else {
+                            Color.BLACK
+                        }
                     )
                     binding.saveIcon.setColorFilter(
-                        if (item.isFavored) Color.RED
-                        else Color.BLACK
+                        if (item.isFavored) {
+                            Color.RED
+                        } else {
+                            Color.BLACK
+                        }
                     )
                 }
             }

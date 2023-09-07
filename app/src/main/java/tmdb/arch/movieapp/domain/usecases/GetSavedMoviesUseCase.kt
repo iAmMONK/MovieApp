@@ -6,8 +6,8 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
-import tmdb.arch.movieapp.domain.model.Movie
-import tmdb.arch.movieapp.domain.repository.MoviesRepository
+import tmdb.arch.movieapp.repository.models.Movie
+import tmdb.arch.movieapp.repository.repository.MoviesRepository
 
 class GetSavedMoviesUseCase(
     private val repository: MoviesRepository

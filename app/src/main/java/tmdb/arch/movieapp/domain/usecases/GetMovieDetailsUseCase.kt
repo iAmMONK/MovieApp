@@ -1,13 +1,13 @@
 package tmdb.arch.movieapp.domain.usecases
 
+import com.example.arch.utils.UiState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.flow
-import tmdb.arch.movieapp.domain.model.Movie
-import tmdb.arch.movieapp.domain.repository.MoviesRepository
-import tmdb.arch.movieapp.utils.UiState
+import tmdb.arch.movieapp.repository.models.Movie
+import tmdb.arch.movieapp.repository.repository.MoviesRepository
 
 class GetMovieDetailsUseCase(private val repository: MoviesRepository) {
 

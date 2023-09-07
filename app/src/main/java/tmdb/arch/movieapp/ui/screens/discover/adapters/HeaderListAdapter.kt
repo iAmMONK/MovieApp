@@ -2,8 +2,8 @@ package tmdb.arch.movieapp.ui.screens.discover.adapters
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.arch.utils.delegates.viewBinding
 import tmdb.arch.movieapp.databinding.MoviesSavedListItemBinding
-import tmdb.arch.movieapp.utils.delegates.viewBinding
 
 class HeaderListAdapter(
     private val onFavoritesClicked: () -> Unit,

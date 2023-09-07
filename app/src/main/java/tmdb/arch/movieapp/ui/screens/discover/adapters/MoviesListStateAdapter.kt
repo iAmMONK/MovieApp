@@ -6,7 +6,7 @@ import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import tmdb.arch.movieapp.databinding.MovieStateListItemBinding
-import tmdb.arch.movieapp.utils.delegates.viewBinding
+import com.example.arch.utils.delegates.viewBinding
 
 class MoviesListStateAdapter(
     private val retryListener: () -> Unit
