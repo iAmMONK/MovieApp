@@ -8,6 +8,8 @@ import tmdb.arch.movieapp.domain.local.MoviesDao
 import tmdb.arch.movieapp.domain.model.Movie
 import tmdb.arch.movieapp.domain.model.local.FavoriteEntity
 import tmdb.arch.movieapp.domain.model.local.ToWatchEntity
+import tmdb.arch.movieapp.domain.model.local.toModel
+import tmdb.arch.movieapp.domain.model.local.toToWatchEntity
 import tmdb.arch.movieapp.domain.model.remote.MovieDto
 import tmdb.arch.movieapp.domain.model.remote.toModel
 import tmdb.arch.movieapp.domain.remote.MoviesService
@@ -39,20 +41,13 @@ class MoviesRepository(
     fun getToWatchIds(): Flow<List<Long>> = moviesDao.getAllToWatch()
         .map { items -> items.map { entity -> entity.movieId } }
 
+    fun getToWatchMovies(): Flow<List<Movie>> = moviesDao.getAllToWatch()
+        .map { list ->
+            list.map(ToWatchEntity::toModel)
+        }
+
     suspend fun insertToWatch(movie: Movie) =
-        moviesDao.insertToWatch(
-            ToWatchEntity(
-                movieId = movie.id,
-                title = movie.title,
-                originalTitle = movie.originalTitle,
-                releaseDate = movie.releaseDate,
-                voteAverage = movie.voteAverage,
-                posterPath = movie.posterPath,
-                overview = movie.overview,
-                genres = movie.genres,
-                runTime = movie.runTime
-            )
-        )
+        moviesDao.insertToWatch(movie.toToWatchEntity())
 
     suspend fun deleteToWatch(movie: Movie) =
         moviesDao.deleteToWatch(movie.id)

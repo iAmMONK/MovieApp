@@ -5,6 +5,7 @@ import org.koin.dsl.module
 import tmdb.arch.movieapp.domain.repository.MoviesRepository
 import tmdb.arch.movieapp.domain.usecases.GetLatestMoviesUseCase
 import tmdb.arch.movieapp.domain.usecases.GetMovieDetailsUseCase
+import tmdb.arch.movieapp.domain.usecases.GetSavedMoviesUseCase
 import tmdb.arch.movieapp.domain.usecases.MoviesSearchInteractor
 import tmdb.arch.movieapp.domain.usecases.UpdateSavedMoviesUseCase
 import tmdb.arch.movieapp.ui.screens.details.MoviesDetailsViewModel
@@ -22,7 +23,12 @@ val viewModels = module {
         )
     }
     viewModel { SearchMoviesViewModel(searchInteractor = get<MoviesSearchInteractor>()) }
-    viewModel { SavedMoviesViewModel() }
+    viewModel {
+        SavedMoviesViewModel(
+            command = it.get<GetSavedMoviesUseCase.Cmd>(),
+            getSavedMoviesUseCase = get<GetSavedMoviesUseCase>()
+        )
+    }
 }
 
 val usecases = module {
@@ -30,4 +36,5 @@ val usecases = module {
     factory { MoviesSearchInteractor(repository = get<MoviesRepository>()) }
     factory { GetMovieDetailsUseCase(repository = get<MoviesRepository>()) }
     factory { UpdateSavedMoviesUseCase(repository = get<MoviesRepository>()) }
+    factory { GetSavedMoviesUseCase(repository = get<MoviesRepository>()) }
 }
