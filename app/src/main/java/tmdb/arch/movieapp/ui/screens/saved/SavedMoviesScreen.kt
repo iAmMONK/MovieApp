@@ -17,20 +17,25 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import tmdb.arch.movieapp.BuildConfig
 import tmdb.arch.movieapp.compose.components.TmdbListItemMovie
+import tmdb.arch.movieapp.compose.locals.LocalNavController
+import tmdb.arch.movieapp.compose.navigation.NavRouteWithArgs
 import tmdb.arch.movieapp.compose.theme.TmdbTheme
 import tmdb.arch.movieapp.repository.models.Movie
+import tmdb.arch.movieapp.ui.screens.details.MovieDetailsScreen
+
+object SavedMoviesScreen : NavRouteWithArgs<String>("saved")
 
 @Composable
 fun SavedMoviesScreen(
-    viewModel: SavedMoviesViewModel,
-    navController: NavController
+    viewModel: SavedMoviesViewModel
 ) {
     var movies by remember { mutableStateOf<List<Movie>>(emptyList()) }
+
+    val navController = LocalNavController.current
 
     LaunchedEffect(key1 = Unit) {
         launch {
@@ -43,7 +48,7 @@ fun SavedMoviesScreen(
     ScreenContent(
         movies = movies,
         onMovieClicked = {
-            navController.navigate("details/$it")
+            MovieDetailsScreen.navigate(navController, it)
         }
     )
 }

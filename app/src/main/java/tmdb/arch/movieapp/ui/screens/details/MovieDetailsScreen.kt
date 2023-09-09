@@ -36,8 +36,11 @@ import tmdb.arch.movieapp.compose.components.TmdbError
 import tmdb.arch.movieapp.compose.components.TmdbIconText
 import tmdb.arch.movieapp.compose.components.TmdbImageLoadingError
 import tmdb.arch.movieapp.compose.components.TmdbLoading
+import tmdb.arch.movieapp.compose.navigation.NavRouteWithArgs
 import tmdb.arch.movieapp.compose.theme.TmdbTheme
 import tmdb.arch.movieapp.repository.models.Movie
+
+object MovieDetailsScreen : NavRouteWithArgs<Long>("details")
 
 @Composable
 fun MovieDetailsScreen(

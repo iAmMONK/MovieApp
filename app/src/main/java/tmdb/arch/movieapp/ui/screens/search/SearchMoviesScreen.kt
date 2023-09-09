@@ -21,7 +21,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.arch.utils.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,19 +28,25 @@ import tmdb.arch.movieapp.BuildConfig
 import tmdb.arch.movieapp.compose.components.TmdbError
 import tmdb.arch.movieapp.compose.components.TmdbListItemMovie
 import tmdb.arch.movieapp.compose.components.TmdbLoading
+import tmdb.arch.movieapp.compose.locals.LocalNavController
+import tmdb.arch.movieapp.compose.navigation.NavRouteWithoutArgs
 import tmdb.arch.movieapp.compose.theme.TmdbTheme
 import tmdb.arch.movieapp.repository.models.Movie
+import tmdb.arch.movieapp.ui.screens.details.MovieDetailsScreen
+
+object SearchMoviesScreen : NavRouteWithoutArgs("search")
 
 @Composable
 fun SearchMoviesScreen(
-    viewModel: SearchMoviesViewModel,
-    navController: NavController
+    viewModel: SearchMoviesViewModel
 ) {
+    val navController = LocalNavController.current
+
     ScreenContent(
         onQueryChanged = viewModel::onSearchQueryChanged,
         searchResultState = viewModel.searchResultsState,
         onMovieClicked = {
-            navController.navigate("details/$it")
+            MovieDetailsScreen.navigate(navController, it)
         }
     )
 }

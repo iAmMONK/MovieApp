@@ -36,27 +36,35 @@ import tmdb.arch.movieapp.R
 import tmdb.arch.movieapp.compose.components.TmdbError
 import tmdb.arch.movieapp.compose.components.TmdbListItemMovie
 import tmdb.arch.movieapp.compose.components.TmdbLoading
+import tmdb.arch.movieapp.compose.locals.LocalNavController
+import tmdb.arch.movieapp.compose.navigation.NavRouteWithoutArgs
 import tmdb.arch.movieapp.compose.theme.TmdbTheme
 import tmdb.arch.movieapp.domain.usecases.GetSavedMoviesUseCase
 import tmdb.arch.movieapp.repository.models.Movie
+import tmdb.arch.movieapp.ui.screens.details.MovieDetailsScreen
+import tmdb.arch.movieapp.ui.screens.saved.SavedMoviesScreen
+import tmdb.arch.movieapp.ui.screens.search.SearchMoviesScreen
+
+object DiscoverMoviesScreen : NavRouteWithoutArgs("discover")
 
 @Composable
 fun DiscoverMoviesScreen(
-    viewModel: DiscoverMoviesViewModel,
-    navController: NavController
+    viewModel: DiscoverMoviesViewModel
 ) {
+    val navController = LocalNavController.current
+
     ScreenContent(
         movies = viewModel.movies,
-        onSearchClicked = { navController.navigate("search") },
+        onSearchClicked = { SearchMoviesScreen.navigate(navController) },
         onFavoritesClicked = {
             val cmd = GetSavedMoviesUseCase.Cmd.FAVORITES.name
-            navController.navigate("saved/$cmd")
+            SavedMoviesScreen.navigate(navController, cmd)
         },
         onToWatchClicked = {
             val cmd = GetSavedMoviesUseCase.Cmd.TO_WATCH.name
-            navController.navigate("saved/$cmd")
+            SavedMoviesScreen.navigate(navController, cmd)
         },
-        onMovieClicked = { navController.navigate("details/$it") }
+        onMovieClicked = { MovieDetailsScreen.navigate(navController, it) }
     )
 }
 
