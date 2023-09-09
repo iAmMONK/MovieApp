@@ -1,7 +1,6 @@
 package tmdb.arch.movieapp.ui.screens.details
 
 import android.content.res.Configuration
-import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

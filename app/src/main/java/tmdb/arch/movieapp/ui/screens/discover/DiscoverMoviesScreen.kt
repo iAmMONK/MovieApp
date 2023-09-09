@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.paging.compose.collectAsLazyPagingItems
@@ -36,22 +37,26 @@ import tmdb.arch.movieapp.compose.components.TmdbError
 import tmdb.arch.movieapp.compose.components.TmdbListItemMovie
 import tmdb.arch.movieapp.compose.components.TmdbLoading
 import tmdb.arch.movieapp.compose.theme.TmdbTheme
+import tmdb.arch.movieapp.domain.usecases.GetSavedMoviesUseCase
 import tmdb.arch.movieapp.repository.models.Movie
 
 @Composable
 fun DiscoverMoviesScreen(
     viewModel: DiscoverMoviesViewModel,
-    onMovieClicked: (Long) -> Unit,
-    onSearchClicked: () -> Unit,
-    onFavoritesClicked: () -> Unit,
-    onToWatchClicked: () -> Unit
+    navController: NavController
 ) {
     ScreenContent(
         movies = viewModel.movies,
-        onSearchClicked = onSearchClicked,
-        onFavoritesClicked = onFavoritesClicked,
-        onToWatchClicked = onToWatchClicked,
-        onMovieClicked = onMovieClicked
+        onSearchClicked = { navController.navigate("search") },
+        onFavoritesClicked = {
+            val cmd = GetSavedMoviesUseCase.Cmd.FAVORITES.name
+            navController.navigate("saved/$cmd")
+        },
+        onToWatchClicked = {
+            val cmd = GetSavedMoviesUseCase.Cmd.TO_WATCH.name
+            navController.navigate("saved/$cmd")
+        },
+        onMovieClicked = { navController.navigate("details/$it") }
     )
 }
 

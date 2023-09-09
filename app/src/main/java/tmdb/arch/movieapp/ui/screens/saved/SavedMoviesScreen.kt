@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import tmdb.arch.movieapp.BuildConfig
@@ -27,7 +28,7 @@ import tmdb.arch.movieapp.repository.models.Movie
 @Composable
 fun SavedMoviesScreen(
     viewModel: SavedMoviesViewModel,
-    onMovieClicked: (Long) -> Unit
+    navController: NavController
 ) {
     var movies by remember { mutableStateOf<List<Movie>>(emptyList()) }
 
@@ -41,7 +42,9 @@ fun SavedMoviesScreen(
 
     ScreenContent(
         movies = movies,
-        onMovieClicked = onMovieClicked
+        onMovieClicked = {
+            navController.navigate("details/$it")
+        }
     )
 }
 

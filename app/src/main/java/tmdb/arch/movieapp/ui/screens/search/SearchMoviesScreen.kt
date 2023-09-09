@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.arch.utils.UiState
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -34,12 +35,14 @@ import tmdb.arch.movieapp.repository.models.Movie
 @Composable
 fun SearchMoviesScreen(
     viewModel: SearchMoviesViewModel,
-    onMovieClicked: (Long) -> Unit
+    navController: NavController
 ) {
     ScreenContent(
         onQueryChanged = viewModel::onSearchQueryChanged,
         searchResultState = viewModel.searchResultsState,
-        onMovieClicked = onMovieClicked
+        onMovieClicked = {
+            navController.navigate("details/$it")
+        }
     )
 }
 
