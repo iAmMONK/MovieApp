@@ -37,7 +37,7 @@ ext {
     http_logging_version = "4.10.0" //https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor
     gson_version = "2.10.1" //https://github.com/google/gson/releases
     coil_version = "2.4.0" //https://github.com/coil-kt/coil/releases
-    koin_version = "3.3.3" //https://github.com/InsertKoinIO/koin
+    koin_version = '3.4.3' //https://github.com/InsertKoinIO/koin
 
     // Testing
     jupiter_version = "5.9.1"

@@ -88,8 +88,8 @@ dependencies {
 
     // Dependency Injection
     implementation "io.insert-koin:koin-android:$koin_version"
-    implementation "io.insert-koin:koin-compose:$koin_version"
-    implementation "io.insert-koin:koin-compose-navigation:$koin_version"
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
+    implementation "io.insert-koin:koin-androidx-compose-navigation:$koin_version"
 
     // Image Loading
     implementation "io.coil-kt:coil:$coil_version"
