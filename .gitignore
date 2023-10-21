@@ -12,7 +12,6 @@
 /captures
 /.idea/*
 gradlew
-gradle.properties
 gradlew.bat
 .externalNativeBuild
 .cxx
